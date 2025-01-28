@@ -1,10 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* globals.css */
+body {
+  @apply bg-gray-50 text-gray-900 transition-colors duration-300; /* Light mode styles */
+}
+
+.dark body {
+  @apply bg-black text-gray-100; /* Dark mode styles */
+}
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,4 +27,30 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+
+  transition: background-color 0.3s, color 0.3s;
+}
+.blinking-cursor {
+  display: inline-block;
+  width: 1px;
+  background-color: currentColor;
+  animation: blink 0.7s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
