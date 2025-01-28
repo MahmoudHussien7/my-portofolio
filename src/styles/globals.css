@@ -3,11 +3,14 @@
 @tailwind utilities;
 /* globals.css */
 body {
-  @apply bg-gray-50 text-gray-900 transition-colors duration-300; /* Light mode styles */
+  background-color: #f9fafb; /* bg-gray-50 */
+  color: #1a202c; /* text-gray-900 */
+  transition: background-color 0.3s, color 0.3s; /* transition-colors duration-300 */
 }
 
 .dark body {
-  @apply bg-black text-gray-100; /* Dark mode styles */
+  background-color: #000000; /* Dark mode styles */
+  color: #f5f5f5; /* Dark mode styles */
 }
 
 :root {
