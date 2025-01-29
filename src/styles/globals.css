@@ -1,36 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* globals.css */
+
+/* 🌙 Global Styles */
 body {
-  background-color: #f9fafb; /* bg-gray-50 */
-  color: #1a202c; /* text-gray-900 */
-  transition: background-color 0.3s, color 0.3s; /* transition-colors duration-300 */
-}
-
-.dark body {
-  background-color: #000000; /* Dark mode styles */
-  color: #f5f5f5; /* Dark mode styles */
-}
-
-:root {
-  --background: #ffffff;
-  --foreground: #ffffff;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
+  @apply transition-colors duration-300; /* Smooth transitions */
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Light Mode */
+:root {
+  --background: #ffffff;
+  --foreground: #1a202c; /* Tailwind text-gray-900 */
+}
+
+/* Dark Mode */
+.dark {
+  --background: #000000;
+  --foreground: #f5f5f5;
+}
+
+/* Apply the variables */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* 🌀 Smooth Rotation Animation */
 @keyframes spin-slow {
   0% {
     transform: rotate(0deg);
@@ -42,12 +38,13 @@ body {
 
 .animate-spin-slow {
   animation: spin-slow 10s linear infinite;
-
-  transition: background-color 0.3s, color 0.3s;
 }
+
+/* ✨ Blinking Cursor */
 .blinking-cursor {
   display: inline-block;
-  width: 1px;
+  width: 2px;
+  height: 1em;
   background-color: currentColor;
   animation: blink 0.7s step-start infinite;
 }
