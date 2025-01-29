@@ -1,25 +1,32 @@
+import { useEffect, useState } from "react";
 import Footer from "@/Components/Footer";
 import Navbar from "@/Components/Navbar";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { useEffect, useState } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [darkMode, setDarkMode] = useState(false);
 
-  // Toggle dark mode by adding/removing the "dark" class from the <html> element
+  // Load dark mode preference from localStorage
   useEffect(() => {
-    if (darkMode) {
+    const savedMode = localStorage.getItem("theme");
+    if (savedMode === "dark") {
       document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+      setDarkMode(true);
     }
-  }, [darkMode]);
+  }, []);
+
+  // Update dark mode on toggle
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    document.documentElement.classList.toggle("dark", newMode);
+    localStorage.setItem("theme", newMode ? "dark" : "light");
+  };
 
   return (
     <>
-      <Navbar />
-
+      <Navbar toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
       <Component {...pageProps} />
       <Footer />
     </>

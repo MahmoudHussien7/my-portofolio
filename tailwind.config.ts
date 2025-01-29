@@ -1,16 +1,11 @@
-import type { Config } from "tailwindcss";
-/** @type {import('tailwindcss').Config} */
-
 export default {
-  darkMode: "class", // Enable class-based dark mode
-  purge: false, // Temporarily disable PurgeCSS
-
+  darkMode: "class", // Ensure dark mode is class-based
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-    "./src/**/*.{js,ts,jsx,tsx}", // Ensure this is added
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx}", // Add if using Next.js App Router
   ],
-
   theme: {
     extend: {
       colors: {
@@ -23,4 +18,4 @@ export default {
     },
   },
   plugins: [],
-} satisfies Config;
+};
