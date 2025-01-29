@@ -15,7 +15,7 @@ body {
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #ffffff;
   transition: background-color 0.3s, color 0.3s;
 }
 
