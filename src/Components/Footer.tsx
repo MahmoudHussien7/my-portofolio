@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-gray-300 pb-8">
         {/* Logo */}
         <div className="md:col-span-1 flex flex-col space-y-4 justify-between">
-          <h2 className="text-3xl font-bold">Logo</h2>
+          <h2 className="text-3xl font-bold italic font-mono">My Portofolio</h2>
           <p>+201026376434</p>
         </div>
 

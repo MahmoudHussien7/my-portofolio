@@ -17,17 +17,19 @@ const About: React.FC = () => {
           </h2>
           <p className="mt-6 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
             Mahmoud Hussein specializes in crafting seamless user experiences
-            through his expertise in HTML, CSS, JavaScript, and React.js. His
-            passion for front-end development drives him to create visually
-            appealing and highly functional websites. With a keen eye for
-            detail, Mahmoud ensures that every project meets the highest
-            standards of quality.
+            through his expertise in HTML, CSS, and uses{" "}
+            <strong className="text-blue-500">React.js</strong> and{" "}
+            <strong>Next.js</strong> as a JavaScript Framework also got hands on{" "}
+            <strong className="text-rose-600">Angular18</strong>. His passion
+            for front-end development drives him to create visually appealing
+            and highly functional websites. With a keen eye for detail, Mahmoud
+            ensures that every project meets the highest standards of quality.
           </p>
 
           {/* CTA Buttons */}
           <div className="mt-6 flex space-x-6 justify-center md:justify-start">
             <a
-              href="#learn-more"
+              href="about"
               className="px-6 py-3 bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900 rounded-lg text-lg font-medium hover:bg-gray-700 dark:hover:bg-gray-300 transition"
             >
               Learn More

@@ -58,9 +58,9 @@ const Hero: React.FC = () => {
           </a>
           <a
             href="contact"
-            className="border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 px-6 py-3 rounded-lg text-lg font-medium hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white transition"
+            className="px-6 py-3 border border-gray-900 dark:border-gray-100 text-gray-900 dark:text-gray-100 rounded-lg text-lg font-medium hover:bg-gray-900 dark:hover:bg-gray-100 hover:text-white dark:hover:text-gray-900 transition flex items-center gap-2"
           >
-            Contact Me
+            Contact <span className="text-xl">→</span>
           </a>
         </div>
       </div>
@@ -68,11 +68,11 @@ const Hero: React.FC = () => {
       {/* Right Side: Image */}
       <div className="mt-10 md:mt-0 md:w-1/2 flex justify-center">
         <Image
-          src="/My-Hero.jpg" // Replace with actual image
+          src="/My-Hero.png" // Replace with actual image
           alt="Hero Image"
           width={500}
           height={500}
-          className="rounded-lg shadow-lg dark:shadow-gray-800"
+          className="animate-spin-roll "
         />
       </div>
     </section>

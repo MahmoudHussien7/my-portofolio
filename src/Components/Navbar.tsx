@@ -37,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = () => {
       {/* Logo */}
       <Link
         href="/"
-        className="text-xl font-bold text-gray-800 dark:text-gray-200"
+        className="text-xl font-bold text-gray-800 dark:text-gray-200 italic font-mono"
       >
         MyPortfolio
       </Link>

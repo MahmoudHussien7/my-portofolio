@@ -35,7 +35,27 @@ body {
     transform: rotate(360deg);
   }
 }
+@keyframes spin-roll {
+  0% {
+    transform: rotate3d(1, 1, 0, 0deg) scale(1);
+  }
+  25% {
+    transform: rotate3d(1, 1, 0, 90deg) scale(1.05);
+  }
+  50% {
+    transform: rotate3d(1, 1, 0, 180deg) scale(0.95);
+  }
+  75% {
+    transform: rotate3d(1, 1, 0, 270deg) scale(1.03);
+  }
+  100% {
+    transform: rotate3d(1, 1, 0, 360deg) scale(1);
+  }
+}
 
+.animate-spin-roll {
+  animation: spin-roll 10s linear infinite;
+}
 .animate-spin-slow {
   animation: spin-slow 10s linear infinite;
 }

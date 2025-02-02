@@ -1,3 +1,5 @@
+import { Infinity } from "lucide-react";
+
 export default {
   darkMode: "class", // Ensure dark mode is class-based
   content: [
@@ -14,6 +16,7 @@ export default {
       },
       animation: {
         "spin-slow": "spin 10s linear infinite",
+        "sping-roll": "sping 10s linear Infinite",
       },
     },
   },
