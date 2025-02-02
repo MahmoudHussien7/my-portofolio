@@ -68,9 +68,7 @@ const Contact: React.FC = () => {
         className="mt-10 max-w-2xl mx-auto space-y-6"
       >
         <div>
-          <label className="block text-lg font-medium text-gray-800">
-            Name
-          </label>
+          <label className="block text-lg font-medium background">Name</label>
           <input
             type="text"
             name="name"
@@ -82,9 +80,7 @@ const Contact: React.FC = () => {
         </div>
 
         <div>
-          <label className="block text-lg font-medium text-gray-800">
-            Email
-          </label>
+          <label className="block text-lg font-medium background">Email</label>
           <input
             type="email"
             name="email"
@@ -96,7 +92,7 @@ const Contact: React.FC = () => {
         </div>
 
         <div>
-          <label className="block text-lg font-medium text-gray-800">
+          <label className="block text-lg font-medium background">
             Message
           </label>
           <textarea
@@ -118,13 +114,13 @@ const Contact: React.FC = () => {
             required
             className="h-5 w-5"
           />
-          <label className="text-gray-800">I accept the Terms</label>
+          <label className="background">I accept the Terms</label>
         </div>
 
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-black text-white py-3 rounded-lg text-lg font-medium hover:bg-gray-800 transition dark:bg-gray-200 dark:text-black dark:hover:bg-gray-700"
+          className="w-full py-3 rounded-lg text-lg font-medium  transition hover:bg-gray-700 dark:hover:bg-gray-300 bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900"
         >
           {loading ? "Sending..." : "Submit"}
         </button>

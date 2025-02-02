@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
       <div className="text-center md:text-left md:w-1/2">
         <h1 className="text-4xl md:text-6xl font-bold text-gray-800 dark:text-gray-100">
           Welcome to The Portfolio of{" "}
-          <span className="text-blue-600 dark:text-violet-400">{text}</span>
+          <span className="text-blue-600 dark:text-blue-600">{text}</span>
           <span className="blinking-cursor">|</span>
         </h1>
         <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
         <div className="mt-6 flex justify-center md:justify-start space-x-4">
           <a
             href="projects"
-            className="bg-slate-950 dark:bg-slate-800 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-slate-800 dark:hover:bg-slate-700 transition"
+            className="px-6 py-3 bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900 rounded-lg text-lg font-medium hover:bg-gray-700 dark:hover:bg-gray-300 transition"
           >
             View Projects
           </a>
