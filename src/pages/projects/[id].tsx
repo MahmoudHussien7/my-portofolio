@@ -30,7 +30,19 @@ const ProjectPage = () => {
       {/* Project Details */}
       <div className="mt-6">
         <h2 className="text-2xl font-semibold">Details</h2>
-        <p className="mt-2 text-gray-700">{project.details}</p>
+        <p className="mt-2  text-gray-700">{project.details}</p>
+        <button
+          onClick={() => window.open(project.Live_demo, "_blank")}
+          className="px-6 py-3 mt-10 bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900 rounded-lg text-lg font-medium hover:bg-gray-700 dark:hover:bg-gray-300 transition"
+        >
+          Live demo
+        </button>
+        <button
+          onClick={() => window.open(project.source_code, "_blank")}
+          className="ml-4 px-6 py-3 bg-blue-600 text-white rounded-lg text-lg font-medium hover:bg-blue-500 transition"
+        >
+          Source Code
+        </button>
       </div>
 
       {/* Back to Projects Button */}
