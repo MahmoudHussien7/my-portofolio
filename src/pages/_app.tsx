@@ -3,6 +3,7 @@ import Footer from "@/Components/Footer";
 import Navbar from "@/Components/Navbar";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import { Analytics } from "@vercel/analytics/next";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [darkMode, setDarkMode] = useState(false);
@@ -28,6 +29,8 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Navbar toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
       <Component {...pageProps} />
+      <Analytics />
+
       <Footer />
     </>
   );
