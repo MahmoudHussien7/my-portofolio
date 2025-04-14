@@ -40,4 +40,13 @@ export const projects = [
     source_code: "https://github.com/MahmoudHussien7/gates-of-egypt",
     Live_demo: "https://gates-of-egypt.vercel.app/",
   },
+  {
+    id: "5",
+    title: "ًNext + Wordpress as CMS",
+    description:
+      "it's not a project more than it's a practcing for using apollo client, graphql for using wordpress as Headless CMS, in other word wordpress is used as dashboard for adding articles to  the blog which making it easier and smooth for makin crud operations at articles ",
+    image: "/Wordpress.png",
+    source_code: "https://github.com/MahmoudHussien7/next15-wordpress-CMS",
+    Live_demo: "",
+  },
 ];
