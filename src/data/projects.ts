@@ -1,3 +1,5 @@
+import { Source_Code_Pro } from "next/font/google";
+
 export const projects = [
   {
     id: "1",
@@ -29,4 +31,13 @@ export const projects = [
     source_code: "https://github.com/MahmoudHussien7/OVZA-LTD",
     Live_demo: "https://ovza.com/",
   },
-]
+  {
+    id: "4",
+    title: "Gates of egypt",
+    description:
+      "Landing Page for the Gates of Egypt made with Nextj, TailwindCSS & Chakra UI and TypeScript",
+    image: "/image.png",
+    source_code: "https://github.com/MahmoudHussien7/gates-of-egypt",
+    live_demo: "https://gates-of-egypt.vercel.app/",
+  },
+];

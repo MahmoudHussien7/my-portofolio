@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
   const [speed, setSpeed] = useState(150);
 
   useEffect(() => {
-    const handleTyping = () => {  
+    const handleTyping = () => {
       const currentString = strings[index];
       if (isDeleting) {
         setText((prev) => prev.slice(0, -1));
