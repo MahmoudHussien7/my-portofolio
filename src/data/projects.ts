@@ -38,6 +38,6 @@ export const projects = [
       "Landing Page for the Gates of Egypt made with Nextj, TailwindCSS & Chakra UI and TypeScript",
     image: "/image.png",
     source_code: "https://github.com/MahmoudHussien7/gates-of-egypt",
-    live_demo: "https://gates-of-egypt.vercel.app/",
+    Live_demo: "https://gates-of-egypt.vercel.app/",
   },
 ];
