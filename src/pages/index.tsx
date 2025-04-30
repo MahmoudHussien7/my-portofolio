@@ -7,6 +7,7 @@ import CTA from "@/Components/CTA";
 import Footer from "@/Components/Footer";
 import Contact from "@/Components/Contact";
 import Navbar from "@/Components/Navbar";
+import ThreeStepsSection from "@/Components/ThreeSteps";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,7 @@ export default function Home() {
       <Hero />
       <Features />
       <About />
+      <ThreeStepsSection />
       <Gallery />
       {/* <CTA /> */}
       <Contact />

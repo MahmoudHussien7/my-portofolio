@@ -1,5 +1,5 @@
 // src/components/Features.tsx
-import { Code, Brush, Smartphone, Rocket } from "lucide-react"; // Import icons
+import { Code, Brush, Smartphone, Rocket, Search } from "lucide-react"; // Import icons
 
 const features = [
   {
@@ -19,6 +19,12 @@ const features = [
     title: "Mobile Friendly",
     description:
       "Ensuring seamless performance across all devices and screen sizes.",
+  },
+  {
+    icon: <Search size={40} className="text-blue-600" />,
+    title: "SEO OPTIMIZATION",
+    description:
+      "Optimize content and structure for better visibility in search engines..",
   },
   {
     icon: <Rocket size={40} className="text-blue-600" />,
@@ -43,7 +49,7 @@ const Features: React.FC = () => {
       </div>
 
       {/* Features Grid */}
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="mt-10 grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map((feature, index) => (
           <div
             key={index}
