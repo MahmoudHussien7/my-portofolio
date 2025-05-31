@@ -1,4 +1,5 @@
 import { Source_Code_Pro } from "next/font/google";
+import { describe } from "node:test";
 
 export const projects = [
   {
@@ -28,7 +29,7 @@ export const projects = [
     image: "/gallery3.png",
     details:
       "This project was built using WordPress and HTML & CSS and JavaScript for the front-end and back-end. The project is a company website for OVZA LTD",
-    source_code: "https://github.com/MahmoudHussien7/OVZA-LTD",
+    source_code: "none",
     Live_demo: "https://ovza.com/",
   },
   {
@@ -47,6 +48,16 @@ export const projects = [
       "it's not a project more than it's a practcing for using apollo client, graphql for using wordpress as Headless CMS, in other word wordpress is used as dashboard for adding articles to  the blog which making it easier and smooth for makin crud operations at articles ",
     image: "/Wordpress.png",
     source_code: "https://github.com/MahmoudHussien7/next15-wordpress-CMS",
-    Live_demo: "",
+    Live_demo: "none",
+  },
+  {
+    id: "10",
+    title: "The Hires Lab",
+    descripiton: "An HR webiste with Blog ",
+    image: "/hireslab.png",
+    details:
+      "An HR webiste with Blog included also a system Dashboard for dynamic content with reviews system and subscribtion to Newsletter to send the new updates to the clients who clicked subscribe website uses Nextjs and tailwind, Colloborating with Backend to link the projects with Api's ",
+    source_code: "none",
+    Live_demo: "https://hireslab.vercel.app/",
   },
 ];

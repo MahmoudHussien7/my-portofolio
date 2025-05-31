@@ -8,6 +8,9 @@ const ProjectPage = () => {
   const { id } = router.query;
 
   const project = projects.find((proj) => proj.id === id);
+  if (project?.Live_demo == "none") {
+    console.log("a7a");
+  }
 
   if (!project) return <p className="text-center text-xl">Project Not Found</p>;
 
@@ -33,13 +36,22 @@ const ProjectPage = () => {
         <p className="mt-2  text-gray-700">{project.details}</p>
         <button
           onClick={() => window.open(project.Live_demo, "_blank")}
-          className="px-6 py-3 mt-10 bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900 rounded-lg text-lg font-medium hover:bg-gray-700 dark:hover:bg-gray-300 transition"
+          disabled={project.Live_demo === "none"}
+          className={`px-6 py-3 mt-10 bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900 rounded-lg text-lg font-medium hover:bg-gray-700 dark:hover:bg-gray-300 transition ${
+            project.Live_demo === "none" ? "cursor-not-allowed" : "null"
+          }`}
         >
           Live demo
         </button>
         <button
           onClick={() => window.open(project.source_code, "_blank")}
-          className="ml-4 px-6 py-3 bg-blue-600 text-white rounded-lg text-lg font-medium hover:bg-blue-500 transition"
+          disabled={project.source_code === "none"}
+          className={`ml-4 px-6 py-3 rounded-lg text-lg font-medium transition 
+    ${
+      project.source_code === "none"
+        ? "bg-gray-400 text-gray-200 cursor-not-allowed"
+        : "bg-blue-600 text-white hover:bg-blue-500"
+    }`}
         >
           Source Code
         </button>
