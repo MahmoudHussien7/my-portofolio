@@ -70,4 +70,14 @@ export const projects = [
     source_code: "none",
     Live_demo: "https://www.birds-marketingag.com/",
   },
+  {
+    id: "12",
+    title: "Spudy Fries",
+    description: "An E-commerce that sells fries and side dishes.",
+    image: "/spudy-fries.png",
+    details:
+      "a demo project for future potinetial client that was created using Nextjs + Typescript and TailwindCSS v4 ",
+    source_code: "https://github.com/MahmoudHussien7/spudy-fries",
+    Live_demo: "https://spudy-fries.vercel.app//",
+  },
 ];
