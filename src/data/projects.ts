@@ -60,4 +60,14 @@ export const projects = [
     source_code: "none",
     Live_demo: "https://hireslab.vercel.app/",
   },
+  {
+    id: "11",
+    title: "Birds Marketing Agency",
+    description: "A marketing agency website with a blog.",
+    image: "/birds-agency.png",
+    details:
+      "A marketing agency website with a blog included also a system Dashboard for dynamic content with reviews system and subscribtion to Newsletter to send the new updates to the clients who clicked subscribe website uses Nextjs and tailwind, Colloborating with Backend to link the projects with Api's ",
+    source_code: "none",
+    Live_demo: "https://www.birds-marketingag.com/",
+  },
 ];
