@@ -71,7 +71,6 @@ export function Experience() {
                 className="md:ml-16 border-2 hover:shadow-xl transition-all duration-300 group hover:scale-[1.02] hover:border-blue-400"
                 style={{
                   borderColor: "var(--foreground)",
-                  borderOpacity: 0.2,
                   backgroundColor: "var(--background)",
                   boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
                 }}>
