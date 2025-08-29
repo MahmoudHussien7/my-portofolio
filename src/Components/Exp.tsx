@@ -8,7 +8,7 @@ const experienceData = [
     company: "DiDi Global",
     location: "Beijing, China",
     period: "May 2025 - Present",
-    type: "Full-time, Contract",
+    type: "Full-time",
     achievements: [
       "Developed responsive user interfaces using modern framework Next.js and TypeScript, ensuring seamless experiences across devices while aligning with evolving global mobility requirements.",
       "Integrated localization modules using React Intl and i18next, delivering multi-language support for 13 countries and reducing deployment errors.",
@@ -24,7 +24,7 @@ const experienceData = [
     company: "OVZA LTD",
     location: "Remote",
     period: "September 2024 - February 2025",
-    type: "Full-time",
+    type: "Contract",
     achievements: [
       "Developed and maintained responsive, high-performance websites using HTML, CSS, JavaScript, and modern frameworks.",
       "Implemented front-end solutions that enhanced user experience while ensuring cross-browser compatibility and mobile responsiveness.",
@@ -45,39 +45,50 @@ export function Experience() {
   return (
     <section className="px-8 md:px-16 py-28 max-w-[1440px] mx-auto text-center  rounded-lg">
       <div className="text-center space-y-4">
-        <h2 className="text-4xl font-bold text-foreground tracking-tight">
+        <h2
+          className="text-4xl font-bold tracking-tight"
+          style={{ color: "var(--foreground)" }}>
           Professional Experience
         </h2>
-        <div className="w-24 h-1 bg-accent mx-auto rounded-full"></div>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+        <div className="w-24 h-1 mx-auto rounded-full bg-blue-500"></div>
+        <p
+          className="text-lg max-w-2xl mx-auto leading-relaxed"
+          style={{ color: "var(--foreground)", opacity: 0.8 }}>
           My journey in web development, building modern applications and
           delivering exceptional user experiences
         </p>
       </div>
 
       <div className="relative">
-        {/* Timeline line */}
-        <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border hidden md:block"></div>
+        <div className="absolute left-8 top-0 bottom-0 w-0.5 hidden md:block bg-blue-400 opacity-60"></div>
 
         <div className="space-y-12">
           {experienceData.map((job, index) => (
             <div key={index} className="relative">
-              {/* Timeline dot */}
-              <div className="absolute left-6 w-4 h-4 bg-accent rounded-full border-4 border-background shadow-lg hidden md:block"></div>
+              <div className="absolute left-6 w-4 h-4 rounded-full border-4 shadow-lg hidden md:block bg-gradient-to-r from-blue-500 to-blue-600 border-white"></div>
 
-              <Card className="md:ml-16 border-2 border-border hover:border-accent/50 hover:shadow-xl transition-all duration-300 group">
+              <Card
+                className="md:ml-16 border-2 hover:shadow-xl transition-all duration-300 group hover:scale-[1.02] hover:border-blue-400"
+                style={{
+                  borderColor: "var(--foreground)",
+                  borderOpacity: 0.2,
+                  backgroundColor: "var(--background)",
+                  boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                }}>
                 <CardHeader className="pb-6">
                   <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                     <div className="space-y-3">
                       <div className="flex items-center gap-3">
-                        <Briefcase className="h-5 w-5 text-accent" />
-                        <CardTitle className="text-2xl font-bold text-foreground group-hover:text-accent transition-colors">
+                        <Briefcase className="h-5 w-5 text-blue-500" />
+                        <CardTitle className="text-2xl font-bold text-blue-600 transition-colors">
                           {job.title}
                         </CardTitle>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Building2 className="h-4 w-4 text-secondary" />
-                        <p className="text-xl font-semibold text-secondary">
+                        <Building2 className="h-4 w-4 text-blue-400" />
+                        <p
+                          className="text-xl font-semibold"
+                          style={{ color: "var(--foreground)", opacity: 0.9 }}>
                           {job.company}
                         </p>
                       </div>
@@ -86,16 +97,18 @@ export function Experience() {
                     <div className="flex flex-col gap-3">
                       <Badge
                         variant="secondary"
-                        className="w-fit bg-accent/10 text-accent border-accent/20 hover:bg-accent/20">
+                        className="w-fit border transition-all duration-200 hover:scale-105 bg-blue-500 text-white border-blue-500 hover:bg-blue-600">
                         {job.type}
                       </Badge>
-                      <div className="flex flex-col sm:flex-row gap-3 text-sm text-muted-foreground">
+                      <div
+                        className="flex flex-col sm:flex-row gap-3 text-sm"
+                        style={{ color: "var(--foreground)", opacity: 0.8 }}>
                         <div className="flex items-center gap-2">
-                          <CalendarDays className="h-4 w-4 text-accent" />
+                          <CalendarDays className="h-4 w-4 text-blue-400" />
                           <span className="font-medium">{job.period}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <MapPin className="h-4 w-4 text-accent" />
+                          <MapPin className="h-4 w-4 text-blue-400" />
                           <span className="font-medium">{job.location}</span>
                         </div>
                       </div>
@@ -105,7 +118,7 @@ export function Experience() {
 
                 <CardContent className="pt-0">
                   <div className="space-y-4">
-                    <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+                    <h4 className="text-sm font-semibold uppercase tracking-wider text-blue-600">
                       Key Achievements
                     </h4>
                     <ul className="space-y-4">
@@ -113,8 +126,13 @@ export function Experience() {
                         <li
                           key={achievementIndex}
                           className="flex items-start gap-4 group/item">
-                          <div className="w-2 h-2 bg-accent rounded-full mt-3 flex-shrink-0 group-hover/item:scale-125 transition-transform" />
-                          <p className="text-card-foreground leading-relaxed text-pretty group-hover/item:text-foreground transition-colors">
+                          <div className="w-2 h-2 rounded-full mt-3 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200 bg-blue-500" />
+                          <p
+                            className="leading-relaxed text-pretty group-hover/item:opacity-95 transition-opacity"
+                            style={{
+                              color: "var(--foreground)",
+                              opacity: 0.85,
+                            }}>
                             {achievement}
                           </p>
                         </li>
