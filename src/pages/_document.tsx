@@ -9,6 +9,10 @@ export default function Document() {
         <meta name="theme-color" content="#6366f1" />
         <meta name="author" content={SITE_NAME} />
         <meta name="application-name" content={SITE_NAME} />
+        <meta
+          name="google-site-verification"
+          content="ffNWRjvmLuoW9V3JT8OG8SA862dSKu67EVobT-miqDE"
+        />
 
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
