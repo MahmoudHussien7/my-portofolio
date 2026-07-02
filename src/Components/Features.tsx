@@ -1,68 +1,91 @@
-// src/components/Features.tsx
-import { Code, Brush, Smartphone, Rocket, Search } from "lucide-react"; // Import icons
+"use client";
+
+import {
+  Code,
+  Brush,
+  BarChart3,
+  Search,
+  Layers,
+  Target,
+} from "lucide-react";
+import { SectionHeader } from "@/Components/ui/section-header";
+import { StaggerContainer, StaggerItem } from "@/Components/ui/motion";
+import { motion } from "framer-motion";
 
 const features = [
   {
-    icon: <Code size={40} className="text-blue-600" />,
+    icon: Code,
     title: "Web Development",
     description:
-      "Building responsive and modern web applications using the latest technologies.",
+      "Building responsive, modern web applications with React, Next.js, and TypeScript.",
+    color: "from-primary to-accent",
   },
   {
-    icon: <Brush size={40} className="text-blue-600" />,
+    icon: Brush,
     title: "UI/UX Design",
     description:
-      "Crafting user-friendly and visually appealing interfaces for better experiences.",
+      "Crafting intuitive interfaces with design systems, accessibility, and visual polish.",
+    color: "from-accent to-secondary",
   },
   {
-    icon: <Smartphone size={40} className="text-blue-600" />,
-    title: "Mobile Friendly",
+    icon: BarChart3,
+    title: "Analytics & Tracking",
     description:
-      "Ensuring seamless performance across all devices and screen sizes.",
+      "GA4, Google Analytics, and Google Tag Manager — setting up events, conversions, and data-driven insights.",
+    color: "from-secondary to-primary",
   },
   {
-    icon: <Search size={40} className="text-blue-600" />,
-    title: "SEO OPTIMIZATION",
+    icon: Search,
+    title: "SEO & Search Tools",
     description:
-      "Optimize content and structure for better visibility in search engines..",
+      "Technical SEO, structured data, Google Search Console, and performance tuning for search visibility.",
+    color: "from-primary to-secondary",
   },
   {
-    icon: <Rocket size={40} className="text-blue-600" />,
-    title: "Performance Optimization",
+    icon: Layers,
+    title: "Architecture Solutions",
     description:
-      "Improving website speed and performance for a smooth user experience.",
+      "Evaluating and designing scalable front-end architectures — SSR, SSG, caching, and maintainable codebases.",
+    color: "from-accent to-primary",
+  },
+  {
+    icon: Target,
+    title: "Business Alignment",
+    description:
+      "Translating business needs and requirements into practical, high-impact technical solutions that deliver results.",
+    color: "from-secondary to-accent",
   },
 ];
 
 const Features: React.FC = () => {
   return (
-    <section className="  flex flex-col items-center px-8 md:px-16 py-28 max-w-[1440px] mx-auto">
-      {/* Section Title */}
-      <div className="text-center w-{568px}">
-        <h6 className="">My Expertise</h6>
-        <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100">
-          Transforming Ideas into Digital Experiences.
-        </h2>
-        <p className="mt-4 text-lg text-gray-600">
-          Here are some of the areas I specialize in.
-        </p>
-      </div>
+    <section className="section-container">
+      <SectionHeader
+        label="My Expertise"
+        title="Transforming Ideas into Digital Experiences"
+        description="Specialized skills I bring to every project — from analytics and SEO to architecture and business-driven delivery."
+      />
 
-      {/* Features Grid */}
-      <div className="mt-10 grid md:grid-cols-2 sm:grid-flow-col-1 sm:gap-0 lg:grid-cols-4 md:gap-4 lg:gap-8">
-        {features.map((feature, index) => (
-          <div
-            key={index}
-            className="p-6 bg-gray-100 rounded-lg shadow-md text-center"
-          >
-            <div className="flex justify-center">{feature.icon}</div>
-            <h3 className="mt-4 text-xl font-semibold text-gray-800">
-              {feature.title}
-            </h3>
-            <p className="mt-2 text-gray-600">{feature.description}</p>
-          </div>
+      <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {features.map((feature) => (
+          <StaggerItem key={feature.title}>
+            <motion.div
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              className="group h-full p-6 rounded-2xl bg-surface border border-border hover:border-primary/40 hover:shadow-card transition-all duration-300"
+            >
+              <div
+                className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${feature.color} text-white mb-4`}
+              >
+                <feature.icon size={28} />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">
+                {feature.title}
+              </h3>
+              <p className="text-muted leading-relaxed">{feature.description}</p>
+            </motion.div>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
     </section>
   );
 };

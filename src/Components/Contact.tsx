@@ -1,5 +1,11 @@
 "use client";
+
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import { SectionHeader } from "@/Components/ui/section-header";
+import { FadeIn } from "@/Components/ui/motion";
+import { Button } from "@/Components/ui/button";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +16,7 @@ const Contact: React.FC = () => {
   });
   const [loading, setLoading] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -26,8 +33,6 @@ const Contact: React.FC = () => {
     setLoading(true);
     setResponseMessage("");
 
-    console.log("Submitting Form Data:", formData); // Debugging
-
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -36,101 +41,129 @@ const Contact: React.FC = () => {
       });
 
       const result = await response.json();
-      console.log("Response from API:", result); // Debugging API Response
 
       if (response.ok) {
-        setResponseMessage("Message sent successfully!");
+        setIsSuccess(true);
+        setResponseMessage("Message sent successfully! I'll get back to you soon.");
         setFormData({ name: "", email: "", message: "", acceptedTerms: false });
       } else {
-        setResponseMessage(result.error || "Something went wrong.");
+        setIsSuccess(false);
+        setResponseMessage(result.error || "Something went wrong. Please try again.");
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setResponseMessage("Failed to send message.");
+    } catch {
+      setIsSuccess(false);
+      setResponseMessage("Failed to send message. Please try again later.");
     }
 
     setLoading(false);
   };
 
+  const inputClasses =
+    "w-full px-4 py-3 rounded-xl border border-border bg-surface text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all";
+
   return (
-    <section className="px-8 md:px-16 py-28 max-w-[1440px] mx-auto">
-      <div className="text-center">
-        <h2 className="text-xl text-gray-600">Contact me</h2>
-        <h1 className="text-5xl font-bold mt-2">Get in Touch</h1>
-        <p className="mt-4 text-lg text-gray-600">
-          We'd love to hear about your project requirements.
-        </p>
-      </div>
+    <section id="contact" className="section-container">
+      <SectionHeader
+        label="Contact"
+        title="Get in Touch"
+        description="Have a project in mind? I'd love to hear about it. Let's build something great together."
+      />
 
-      {/* Contact Form */}
-      <form
-        onSubmit={handleSubmit}
-        className="mt-10 max-w-2xl mx-auto space-y-6"
-      >
-        <div>
-          <label className="block text-lg font-medium background">Name</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-blue-500"
-          />
-        </div>
-
-        <div>
-          <label className="block text-lg font-medium background">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-blue-500"
-          />
-        </div>
-
-        <div>
-          <label className="block text-lg font-medium background">
-            Message
-          </label>
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            rows={4}
-            className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:border-blue-500"
-          />
-        </div>
-
-        <div className="flex items-center space-x-2">
-          <input
-            type="checkbox"
-            name="acceptedTerms"
-            checked={formData.acceptedTerms}
-            onChange={handleChange}
-            required
-            className="h-5 w-5"
-          />
-          <label className="background">I accept the Terms</label>
-        </div>
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full py-3 rounded-lg text-lg font-medium  transition hover:bg-gray-700 dark:hover:bg-gray-300 bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900"
+      <FadeIn>
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-2xl mx-auto space-y-6 p-8 rounded-2xl border border-border bg-surface shadow-card"
         >
-          {loading ? "Sending..." : "Submit"}
-        </button>
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+              Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              placeholder="Your name"
+              className={inputClasses}
+            />
+          </div>
 
-        {responseMessage && (
-          <p className="text-center text-lg font-medium text-blue-600 mt-4">
-            {responseMessage}
-          </p>
-        )}
-      </form>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              placeholder="you@example.com"
+              className={inputClasses}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              rows={5}
+              placeholder="Tell me about your project..."
+              className={inputClasses}
+            />
+          </div>
+
+          <div className="flex items-start gap-3">
+            <input
+              id="terms"
+              type="checkbox"
+              name="acceptedTerms"
+              checked={formData.acceptedTerms}
+              onChange={handleChange}
+              required
+              className="mt-1 h-4 w-4 rounded border-border text-primary focus:ring-primary"
+            />
+            <label htmlFor="terms" className="text-sm text-muted">
+              I accept the terms and agree to be contacted regarding my inquiry.
+            </label>
+          </div>
+
+          <Button type="submit" disabled={loading} className="w-full" size="lg">
+            {loading ? (
+              "Sending..."
+            ) : (
+              <>
+                Send Message <Send size={18} />
+              </>
+            )}
+          </Button>
+
+          <AnimatePresence mode="wait">
+            {responseMessage && (
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className={`flex items-center gap-2 justify-center text-sm font-medium ${
+                  isSuccess ? "text-secondary" : "text-red-500"
+                }`}
+              >
+                {isSuccess ? <CheckCircle size={18} /> : <AlertCircle size={18} />}
+                {responseMessage}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </form>
+      </FadeIn>
     </section>
   );
 };

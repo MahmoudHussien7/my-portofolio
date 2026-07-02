@@ -2,70 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 🌙 Global Styles */
-body {
-  @apply transition-colors duration-300; /* Smooth transitions */
-  font-family: Arial, Helvetica, sans-serif;
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap");
 
-/* Light Mode */
 :root {
-  --background: #ffffff;
-  --foreground: #1a202c;
+  --background: #f8f9ff;
+  --foreground: #1e1b4b;
+  --surface: #ffffff;
+  --surface-elevated: #f1f5f9;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --secondary: #14b8a6;
+  --accent: #8b5cf6;
+  --gradient-start: #6366f1;
+  --gradient-mid: #8b5cf6;
+  --gradient-end: #14b8a6;
 }
 
-/* Dark Mode */
 .dark {
-  --background: #000000;
-  --foreground: #ffffff;
+  --background: #0b0f19;
+  --foreground: #f1f5f9;
+  --surface: #131825;
+  --surface-elevated: #1a2235;
+  --muted: #94a3b8;
+  --border: #1e293b;
+  --primary: #818cf8;
+  --primary-hover: #6366f1;
+  --secondary: #2dd4bf;
+  --accent: #a78bfa;
+  --gradient-start: #818cf8;
+  --gradient-mid: #a78bfa;
+  --gradient-end: #2dd4bf;
 }
 
-/* Apply the variables */
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-}
-
-/* 🌀 Smooth Rotation Animation */
-@keyframes spin-slow {
-  0% {
-    transform: rotate(0deg);
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
+
+  body {
+    @apply transition-colors duration-300 antialiased;
+    font-family: "Inter", system-ui, sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      var(--gradient-start),
+      var(--gradient-mid),
+      var(--gradient-end)
+    );
+  }
+
+  .gradient-border {
+    position: relative;
+    background: var(--surface);
+    border-radius: 1rem;
+  }
+
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      var(--gradient-start),
+      var(--gradient-mid),
+      var(--gradient-end)
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .section-container {
+    @apply px-6 md:px-16 py-24 max-w-[1440px] mx-auto;
+  }
+}
+
+@keyframes float {
+  0%,
   100% {
-    transform: rotate(360deg);
-  }
-}
-@keyframes spin-roll {
-  0% {
-    transform: rotate3d(1, 1, 0, 0deg) scale(1);
-  }
-  25% {
-    transform: rotate3d(1, 1, 0, 90deg) scale(1.05);
+    transform: translateY(0);
   }
   50% {
-    transform: rotate3d(1, 1, 0, 180deg) scale(0.95);
-  }
-  75% {
-    transform: rotate3d(1, 1, 0, 270deg) scale(1.03);
-  }
-  100% {
-    transform: rotate3d(1, 1, 0, 360deg) scale(1);
+    transform: translateY(-12px);
   }
 }
 
-.animate-spin-roll {
-  animation: spin-roll 10s linear infinite;
-}
-.animate-spin-slow {
-  animation: spin-slow 10s linear infinite;
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
-/* ✨ Blinking Cursor */
 .blinking-cursor {
   display: inline-block;
   width: 2px;
   height: 1em;
-  background-color: currentColor;
+  background: var(--primary);
   animation: blink 0.7s step-start infinite;
 }
 

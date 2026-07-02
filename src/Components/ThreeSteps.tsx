@@ -1,21 +1,30 @@
-// components/ThreeStepsSection.tsx
-import React from "react";
+"use client";
+
+import { motion } from "framer-motion";
+import { SectionHeader } from "@/Components/ui/section-header";
+import { FadeIn } from "@/Components/ui/motion";
 
 interface StepProps {
   number: string;
   title: string;
   description: string;
+  index: number;
 }
 
-const Step: React.FC<StepProps> = ({ number, title, description }) => {
+const Step: React.FC<StepProps> = ({ number, title, description, index }) => {
   return (
-    <div className="flex flex-col">
-      <div className="text-blue-700 font-bold text-9xl mb-2 leading-none">
-        {number}
-      </div>
-      <h3 className="text-white text-3xl font-medium mb-4">{title}</h3>
-      <p className="text-white/90 text-lg leading-relaxed">{description}</p>
-    </div>
+    <FadeIn delay={index * 0.15} direction="up">
+      <motion.div
+        whileHover={{ y: -4 }}
+        className="flex flex-col h-full p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/25 transition-colors"
+      >
+        <span className="text-7xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-primary to-secondary leading-none mb-4 opacity-80">
+          {number}
+        </span>
+        <h3 className="text-2xl font-semibold text-white mb-3">{title}</h3>
+        <p className="text-white/75 leading-relaxed">{description}</p>
+      </motion.div>
+    </FadeIn>
   );
 };
 
@@ -25,47 +34,42 @@ const ThreeStepsSection: React.FC = () => {
       number: "01",
       title: "Design",
       description:
-        "The process begins with Sketch & Design, starting with an initial consultation to discuss goals and preferences, followed by creating wireframes and design mockups to visualize the site.",
+        "Starting with consultation, wireframes, and high-fidelity mockups to visualize the product before a single line of code is written.",
     },
     {
       number: "02",
       title: "Development",
       description:
-        "In the Development phase, designs are turned into a functional website while setting up the server and database, ensuring responsiveness and mobile-friendliness.",
+        "Turning designs into functional, responsive applications with clean architecture, reusable components, and modern frameworks like React and Next.js.",
     },
     {
       number: "03",
       title: "Deployment",
       description:
-        "Finally, during Deployment, thorough testing is conducted for functionality and compatibility, the site is launched, and ongoing support and maintenance are provided to keep it updated.",
+        "Thorough testing, performance audits, and seamless launches — followed by monitoring and maintenance to keep everything running smoothly.",
     },
   ];
 
   return (
-    <section
-      className="py-24 px-6 bg-gradient-to-r from-slate-800 from-40% to-purple-500 to-40%
+    <section className="relative py-24 px-6 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1e1b4b] via-[#312e81] to-[#0f766e]" />
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-primary blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-secondary blur-3xl" />
+      </div>
 
+      <div className="relative max-w-6xl mx-auto">
+        <SectionHeader
+          label="My Process"
+          title="Three Steps to Success"
+          description="A proven workflow from concept to launch — design, build, and ship with confidence."
+          align="left"
+          variant="light"
+        />
 
-
-
-
-
-"
-    >
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-5xl md:text-6xl font-bold mb-20 text-white">
-          Only Three
-          <span className="font-bold text-blue-700"> D's</span> To Succes
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((step, index) => (
-            <Step
-              key={index}
-              number={step.number}
-              title={step.title}
-              description={step.description}
-            />
+            <Step key={step.number} {...step} index={index} />
           ))}
         </div>
       </div>

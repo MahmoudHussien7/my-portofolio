@@ -1,71 +1,93 @@
+"use client";
+
 import { useRouter } from "next/router";
 import { projects } from "@/data/projects";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { Button } from "@/Components/ui/button";
+import { FadeIn } from "@/Components/ui/motion";
+import SEO from "@/Components/SEO";
+import { getProjectSEO, getProjectSchema } from "@/lib/project-seo";
 
 const ProjectPage = () => {
   const router = useRouter();
   const { id } = router.query;
+  const projectId = typeof id === "string" ? id : "";
+  const project = projects.find((proj) => proj.id === projectId);
+  const seo = getProjectSEO(projectId);
+  const schema = getProjectSchema(projectId);
 
-  const project = projects.find((proj) => proj.id === id);
-  if (project?.Live_demo == "none") {
-    console.log("a7a");
+  if (!project || !seo || !schema) {
+    return (
+      <main className="section-container text-center">
+        <p className="text-xl text-muted">Project not found.</p>
+        <div className="mt-6">
+          <Button href="/projects" variant="outline">
+            <ArrowLeft size={18} /> Back to Projects
+          </Button>
+        </div>
+      </main>
+    );
   }
 
-  if (!project) return <p className="text-center text-xl">Project Not Found</p>;
-
   return (
-    <main className="px-8 md:px-16 py-28 max-w-[1440px] mx-auto">
-      <h1 className="text-5xl font-bold">{project.title}</h1>
-      <p className="mt-4 text-lg text-gray-600">{project.description}</p>
-
-      {/* Project Image */}
-      <div className="mt-8">
-        <Image
-          src={project.image}
-          alt={project.title}
-          width={800}
-          height={400}
-          className="rounded-lg shadow-lg w-full object-cover"
-        />
-      </div>
-
-      {/* Project Details */}
-      <div className="mt-6">
-        <h2 className="text-2xl font-semibold">Details</h2>
-        <p className="mt-2  text-gray-700">{project.details}</p>
-        <button
-          onClick={() => window.open(project.Live_demo, "_blank")}
-          disabled={project.Live_demo === "none"}
-          className={`px-6 py-3 mt-10 bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900 rounded-lg text-lg font-medium hover:bg-gray-700 dark:hover:bg-gray-300 transition ${
-            project.Live_demo === "none" ? "cursor-not-allowed" : "null"
-          }`}
-        >
-          Live demo
-        </button>
-        <button
-          onClick={() => window.open(project.source_code, "_blank")}
-          disabled={project.source_code === "none"}
-          className={`ml-4 px-6 py-3 rounded-lg text-lg font-medium transition 
-    ${
-      project.source_code === "none"
-        ? "bg-gray-400 text-gray-200 cursor-not-allowed"
-        : "bg-blue-600 text-white hover:bg-blue-500"
-    }`}
-        >
-          Source Code
-        </button>
-      </div>
-
-      {/* Back to Projects Button */}
-      <div className="mt-10">
-        <a href="/projects">
-          <a className="px-6 py-3 bg-gray-900 text-white rounded-lg text-lg font-medium hover:bg-gray-700 transition">
+    <>
+      <SEO seo={seo} schema={schema} />
+      <main className="section-container">
+        <FadeIn>
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 text-muted hover:text-primary transition-colors mb-8"
+          >
+            <ArrowLeft size={18} />
             Back to Projects
-          </a>
-        </a>
-      </div>
-    </main>
+          </Link>
+
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground">
+            {project.title}
+          </h1>
+          <p className="mt-4 text-lg text-muted max-w-3xl">{project.description}</p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mt-10 rounded-2xl overflow-hidden border border-border shadow-card"
+          >
+            <Image
+              src={project.image}
+              alt={project.title}
+              width={800}
+              height={400}
+              className="w-full object-cover"
+            />
+          </motion.div>
+
+          <div className="mt-10 max-w-3xl">
+            <h2 className="text-2xl font-semibold text-foreground">Details</h2>
+            <p className="mt-4 text-muted leading-relaxed">{project.details}</p>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              {project.Live_demo !== "none" && (
+                <Button onClick={() => window.open(project.Live_demo, "_blank")}>
+                  Live Demo <ExternalLink size={18} />
+                </Button>
+              )}
+              {project.source_code !== "none" && (
+                <Button
+                  variant="outline"
+                  onClick={() => window.open(project.source_code, "_blank")}
+                >
+                  Source Code <Github size={18} />
+                </Button>
+              )}
+            </div>
+          </div>
+        </FadeIn>
+      </main>
+    </>
   );
 };
 
