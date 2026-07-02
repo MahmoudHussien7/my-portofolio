@@ -3,8 +3,7 @@ export const SITE_TITLE = "Mahmoud Hussein | Front-End Developer Portfolio";
 export const SITE_DESCRIPTION =
   "Mahmoud Hussein is a Front-End Developer specializing in React, Next.js, and TypeScript. Fast, SEO-friendly web apps.";
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  "https://my-portofolio-sigma-flame.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://mahmoudhussein-sigma.vercel.app";
 export const SITE_LOCALE = "en_US";
 export const AUTHOR = {
   name: "Mahmoud Hussein Abdulhaliem",
