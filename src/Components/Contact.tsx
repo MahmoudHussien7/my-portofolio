@@ -48,7 +48,13 @@ const Contact: React.FC = () => {
         setFormData({ name: "", email: "", message: "", acceptedTerms: false });
       } else {
         setIsSuccess(false);
-        setResponseMessage(result.error || "Something went wrong. Please try again.");
+        const fallback =
+          result.code === "SMTP_AUTH_FAILED"
+            ? "Email could not be sent: check Gmail App Password in server settings."
+            : result.code === "SMTP_NOT_CONFIGURED"
+              ? "Contact form is not configured on the server yet."
+              : result.error || "Something went wrong. Please try again.";
+        setResponseMessage(fallback);
       }
     } catch {
       setIsSuccess(false);
