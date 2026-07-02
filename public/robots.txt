@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mahmoudhussein-sigma.vercel.app/sitemap.xml
