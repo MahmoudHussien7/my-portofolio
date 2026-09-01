@@ -11,6 +11,29 @@ export const projects = [
     Live_demo: "https://giproperties.ae",
   },
   {
+    id: "hiralyze",
+    title: "Hiralyze",
+    description:
+      "HR recruitment CRM dashboard built with React and modern tooling for managing candidates, pipelines, and hiring workflows with responsive UI, secure authentication, and analytics today.",
+    image: "/hiralyze.png",
+    details:
+      "Hiralyze is an HR recruitment CRM dashboard designed to streamline candidate tracking, hiring pipelines, and recruiter workflows in one centralized interface. Built with React and modern front-end practices, it features secure login flows, account management, and a polished responsive layout for HR teams. The platform demonstrates scalable dashboard architecture, form validation, and user-centric design patterns suitable for recruitment agencies and internal talent teams managing high-volume hiring operations efficiently online worldwide today. for testing: Username: ADMN, Password: 123456",
+    source_code:
+      "https://github.com/Asmaa-AbdElkhalek209/HR-Recruitment-CRM-Dashboard",
+    Live_demo: "https://hiralyze.vercel.app/",
+  },
+  {
+    id: "careers-portal",
+    title: "Careers Portal",
+    description:
+      "Modern careers and recruitment portal with an admin dashboard for managing job listings, applications, and hiring workflows through a secure authenticated interface.",
+    image: "/careers-portal.png",
+    details:
+      "Careers Portal is a full-featured recruitment dashboard for posting roles, reviewing applications, and managing hiring pipelines in one place. Built with a modern React front-end and secure authentication, it delivers a responsive admin experience for HR teams. The careers module supports structured job management, candidate visibility, and streamlined day-to-day recruiting operations for growing organizations seeking a clean, production-ready talent portal experience online worldwide today successfully. user: admin@test.com Pw: Admin123!@#a",
+    source_code: "none",
+    Live_demo: "https://careers-portal-red.vercel.app/dashboard/careers",
+  },
+  {
     id: "1",
     title: "Aura Blogpost",
     description:
