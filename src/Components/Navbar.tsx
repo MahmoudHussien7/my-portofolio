@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 
-const CV_PATH = "/Mahmoud-Hussein-CV.pdf";
+const CV_PATH = "/Mahmoud_Hussien_CV.pdf";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -132,7 +132,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center gap-2">
           <motion.a
             href={CV_PATH}
-            download="Mahmoud-Hussein-CV.pdf"
+            download="Mahmoud_Hussien_CV.pdf"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-primary text-white hover:bg-primary-hover transition-colors shadow-sm"
@@ -198,7 +198,7 @@ const Navbar: React.FC = () => {
               >
                 <a
                   href={CV_PATH}
-                  download="Mahmoud-Hussein-CV.pdf"
+                  download="Mahmoud_Hussien_CV.pdf"
                   onClick={() => setIsOpen(false)}
                   className="flex items-center justify-center gap-2 w-full py-3 rounded-lg font-semibold bg-primary text-white hover:bg-primary-hover transition-colors"
                 >
