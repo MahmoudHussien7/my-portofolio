@@ -8,7 +8,8 @@
     "prebuild": "node scripts/generate-sitemap.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate:cv": "node scripts/generate-cv-pdf.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
